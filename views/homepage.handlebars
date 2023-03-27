@@ -1,0 +1,8 @@
+{{#each posts as |post|}}
+  <a href="/post/{{post.id}}">
+  <article>
+    <p>{{post.title}}</p>
+    <p>{{post.created_date}}</p>
+  </article>  
+  </a>    
+{{/each}}

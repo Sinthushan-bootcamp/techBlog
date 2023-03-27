@@ -13,12 +13,13 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const Posts = postData.map((post) =>
+    const posts = postData.map((post) =>
       post.get({ plain: true })
     );
 
     res.render('homepage', {
-      Posts,
+      posts, 
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     console.log(err);
@@ -26,9 +27,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/dashboard/:id', withAuth,async (req, res) => {
+router.get('/dashboard/', withAuth,async (req, res) => {
     try {
-      const userData = await User.findByPk(req.params.id, {
+      const userData = await User.findByPk(req.session.user_id, {
         include: [
           {
             model: Post,
@@ -46,10 +47,8 @@ router.get('/dashboard/:id', withAuth,async (req, res) => {
 });
 
 router.get('/post/:id',withAuth, async (req, res) => {
-
     try {
       const postData = await Post.findByPk(req.params.id);
-
       const post = postData.get({ plain: true });
 
       res.render('post', { post, loggedIn: req.session.loggedIn });
@@ -64,8 +63,15 @@ router.get('/login', (req, res) => {
       res.redirect('/');
       return;
     }
-  
     res.render('login');
-  });
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('signup');
+});
   
   module.exports = router;
