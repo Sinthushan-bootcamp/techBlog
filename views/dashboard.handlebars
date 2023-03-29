@@ -1,3 +1,6 @@
 {{#each user.posts as |post|}}
     {{> post-details is_dashboard = true}}
 {{/each}}
+<div id="addPost">
+    <a href="/post/create"><button class="btn">+ Add Post</button></a>
+</div>

@@ -51,6 +51,27 @@ router.get('/dashboard/', withAuth,async (req, res) => {
 
 });
 
+router.get('/post/create/',withAuth, async (req, res) => {
+  try {
+    res.render('create', { loggedIn: req.session.loggedIn});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/post/update/:id',withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+    const post = postData.get({ plain: true });
+
+    res.render('post', { post, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get('/post/:id',withAuth, async (req, res) => {
     try {
       const postData = await Post.findByPk(req.params.id);
@@ -62,6 +83,10 @@ router.get('/post/:id',withAuth, async (req, res) => {
       res.status(500).json(err);
     }
 });
+
+
+
+
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
