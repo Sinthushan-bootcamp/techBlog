@@ -1,0 +1,20 @@
+<article>
+    <a href="/post/{{id}}">
+      <div class="card">
+      {{#if is_dashboard}}
+        <div class="card-header">
+          <header>{{title}}</header>
+          <div>{{format_date created_date}}</div>
+        </div>
+      {{else}}
+        <div class="card-header">
+          <header>{{title}}</header>
+          <div>Posted by {{user.username}} on {{format_date created_date}}</div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{content}}</p>
+        </div>
+      {{/if}}
+      </div>
+    </a> 
+</article>  
