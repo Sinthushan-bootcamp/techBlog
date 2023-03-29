@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', {
       posts, 
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      title: "The Tech Blog"
     });
   } catch (err) {
     console.log(err);
@@ -38,7 +39,11 @@ router.get('/dashboard/', withAuth,async (req, res) => {
         ],
       });
       const user = userData.get({ plain: true });
-      res.render('dashboard', { user, loggedIn: req.session.loggedIn });
+      res.render('dashboard', { 
+        user, 
+        loggedIn: req.session.loggedIn,
+        title: "Your Dashboard",
+       });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
