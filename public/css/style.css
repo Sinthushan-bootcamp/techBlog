@@ -80,7 +80,12 @@
     flex-direction: column;
     padding: 0.5rem 1.5rem;
   }
-  
+  .btn-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0.5rem 1.5rem;
+  }
   .form-group label {
     font-weight: bolder;
     font-size: 1.5rem;
@@ -100,6 +105,15 @@
     cursor: pointer; 
     border-radius: 1rem;
   }
+  
+  .btn-group .btn{
+    margin-left: 1rem;
+  }
+
+  #deleteBtn{
+    background-color: red;
+    color: var(--primary);
+  }
 
   #addPost{
    display: flex;
@@ -112,6 +126,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
     font-weight: bolder;
   }
 
