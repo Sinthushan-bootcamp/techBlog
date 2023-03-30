@@ -1,5 +1,9 @@
 <article>
+    {{#if is_dashboard}}
+    <a href="/post/update/{{id}}">
+    {{else}}
     <a href="/post/{{id}}">
+    {{/if}}
       <div class="card">
       {{#if is_dashboard}}
         <div class="card-header">

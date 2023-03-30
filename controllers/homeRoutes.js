@@ -53,7 +53,7 @@ router.get('/dashboard/', withAuth,async (req, res) => {
 
 router.get('/post/create/',withAuth, async (req, res) => {
   try {
-    res.render('create', { loggedIn: req.session.loggedIn});
+    res.render('createPost', { loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -64,8 +64,11 @@ router.get('/post/update/:id',withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
     const post = postData.get({ plain: true });
-
-    res.render('post', { post, loggedIn: req.session.loggedIn });
+    if (post.author_id === req.session.user_id){
+      res.render('updatePost', { post, loggedIn: req.session.loggedIn });
+      return;
+    }
+    res.status(403).json({ message: 'You cannot access this post' });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
