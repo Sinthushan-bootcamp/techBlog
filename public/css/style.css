@@ -52,6 +52,10 @@
     margin: 2rem auto;
     border: 0.2rem solid var(--primary);
   }
+
+  .card a{
+    margin: 1rem;
+  }
   .card-header {
     display: flex;
     flex-direction: row;
@@ -132,4 +136,45 @@
 
   textarea {
     min-height: 10rem;
+  }
+
+  #fullPost{
+    display: flex;
+    flex-direction: column;
+    color: var(--primary);
+    border: 0.1rem solid var(--primary);
+    width: 75%;
+    margin:2rem auto;
+    min-height: auto;
+  }
+
+  #fullPost header, #fullPost small {
+    align-self: center;
+  }
+
+  .commentSection{
+    width: 75%;
+    margin:2rem auto;
+  }
+
+  .commentSection .card{
+    width: 100%;
+  }
+
+  .individualComment{
+    margin: 2rem;
+    padding: 2rem;
+    border: 0.1rem solid var(--primary);
+    display: flex;
+    flex-direction: column;
+  }
+  .commentBody{
+    text-align: start;
+  }
+  .commentFooter{
+    margin-top: 1rem;
+    text-align: end;
+  }
+  .content{
+    margin:1rem;
   }

@@ -1,1 +1,29 @@
-<p>POSTTTSS</p>
+<article id="fullPost">
+    <header>
+        <h1>{{post.title}}</h1>
+    </header>
+    <small>By: {{post.user.username}}  Created: {{format_date post.created_date}}</small>
+    <br />
+    <div class="content">
+        <p>{{post.content}}</p>
+    </div>
+    
+</article>
+<section class="commentSection">
+    <div class="card">
+        <div class="card-header"><header>Comments</header></div>
+        <form class="form comment-form">
+            <div class="form-group">
+                <label for="content">Leave A Comment:</label>
+                <textarea class="form-input" id="content"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Post</button>
+            </div>
+        </form>
+        {{#each post.comments as |comment|}}
+            {{> comment}}
+        {{/each}}
+    </div>
+</section>
+<script src="/js/comment.js"></script>
