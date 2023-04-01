@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Post extends Model {}
-
+// initialize Post model with columns id, title, content,created_date, and author_id
 Post.init(
     {
       id: {
@@ -24,7 +24,7 @@ Post.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      author_id: {
+      author_id: { //foreign key to user model
         type: DataTypes.INTEGER,
         references: {
           model: 'user',
@@ -35,9 +35,9 @@ Post.init(
     {
       sequelize,
       timestamps: false,
-      freezeTableName: true,
+      freezeTableName: true, // ensures the name stays consistent
       underscored: true,
-      modelName: 'post',
+      modelName: 'post', // in the db the table will be named category
     }
   );
   

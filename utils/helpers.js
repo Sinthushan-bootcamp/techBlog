@@ -1,7 +1,7 @@
 module.exports = {
+  //helper function used in handlebars pages
     format_date: (date) => {
       var result = new Date(date);
-      result.setDate(result.getDate() + 1825);
-      return result.toLocaleDateString('en-us');
+      return result.toLocaleDateString('en-us'); //convert date to m/d/yyyy format
     },
   };

@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Comment extends Model {}
-
+// initialize comment model with columns id, content, created_date, author_id, and post_id
 Comment.init(
     {
       id: {
@@ -20,14 +20,14 @@ Comment.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      author_id: {
+      author_id: { // foreign key to the User model
         type: DataTypes.INTEGER,
         references: {
           model: 'user',
           key: 'id',
         },
       },
-      post_id: {
+      post_id: { //foreign key to the Post model
         type: DataTypes.INTEGER,
         references: {
           model: 'post',
@@ -38,9 +38,9 @@ Comment.init(
     {
       sequelize,
       timestamps: false,
-      freezeTableName: true,
+      freezeTableName: true, // ensures the name stays consistent
       underscored: true,
-      modelName: 'comment',
+      modelName: 'comment', // in the db the table will be named comment
     }
   );
   

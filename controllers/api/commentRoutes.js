@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+// route to create a comment
 router.post('/', async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
-      author_id: req.session.user_id,
+      author_id: req.session.user_id, // the author of the comment will be automatically assigned to the logged in user that made the comment
     });
 
     res.status(200).json(newComment);
@@ -14,12 +15,12 @@ router.post('/', async (req, res) => {
   }
 });
 
-
+// route to update a comment
 router.put('/:id', async (req, res) => {
   try {
     const postData = await Comment.update(req.body,
       {
-      where: {
+      where: { // the where clause checks if there is a comment with the given id that belongs to the current logged in user
         id: req.params.id,
         author_id: req.session.user_id,
       },
@@ -36,11 +37,11 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-
+// route to delete a comment
 router.delete('/:id', async (req, res) => {
   try {
     const postData = await Comment.destroy({
-      where: {
+      where: { // the where clause checks if there is a comment with the given id that belongs to the current logged in user
         id: req.params.id,
         author_id: req.session.user_id,
       },
