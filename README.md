@@ -19,7 +19,7 @@ Ensure that you have MySQL installed as well as an account created!
 
 ## Usage
 
-Please see deployed site [here]()
+Please see deployed site [here](https://apricot-cupcake-54390.herokuapp.com/)
 
 First clone the repo and from the command line CD into the directory. Once in the directory follow the [install instructions](#installation) and then follow the following steps:
 
